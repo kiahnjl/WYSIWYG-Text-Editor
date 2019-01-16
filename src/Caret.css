@@ -1,6 +1,7 @@
 .caret {
-  height: 18px;
+  height: 16px;
   width: 1px;
+  margin: 0 2px;
   background-color: #000;
   animation: blink 1s infinite;
 }
@@ -29,4 +30,5 @@
 
 .caret--active {
   display: inline-block;
+  vertical-align: bottom;
 }

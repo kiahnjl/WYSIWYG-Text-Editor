@@ -6,7 +6,6 @@ class Editor extends Component {
   constructor() {
     super();
     this.state = {
-      text: '',
       active: false
     };
     this.focusSelf = this.focus.bind(this);
@@ -27,13 +26,7 @@ class Editor extends Component {
   }
 
   keydown(e) {
-    // check other special keys
-    if(e.key !== 'Tab') {
-      e.persist();
-      this.setState((state) => ({
-        text: state.text + e.key
-      }));
-    }
+    this.props.onType(e.key);
   }
   
   render() {
@@ -43,7 +36,7 @@ class Editor extends Component {
     return (
       <div class={classes} tabIndex="0"
            onFocus={this.focusSelf} onBlur={this.blurSelf} onKeyDown={this.keydownSelf}>
-        {this.state.text}
+        {this.props.text}
         <Caret active={this.state.active}/>
       </div>
     );
