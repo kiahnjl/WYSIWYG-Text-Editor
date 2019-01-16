@@ -1,0 +1,32 @@
+.caret {
+  height: 18px;
+  width: 1px;
+  background-color: #000;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  49% {
+    opacity: 1;
+  }
+
+  51% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret--inactive {
+  display: none;
+}
+
+.caret--active {
+  display: inline-block;
+}

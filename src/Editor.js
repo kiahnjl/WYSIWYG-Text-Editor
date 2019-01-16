@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Caret from './Caret';
 import './Editor.css';
 
 class Editor extends Component {
@@ -28,7 +29,9 @@ class Editor extends Component {
     classes += this.state.active ? ' editor--active' : '';
     
     return (
-      <div class={classes} tabindex="0" onFocus={this.focusSelf} onBlur={this.blurSelf}></div>
+      <div class={classes} tabindex="0" onFocus={this.focusSelf} onBlur={this.blurSelf}>
+        <Caret active={this.state.active}/>
+      </div>
     );
   }
 }

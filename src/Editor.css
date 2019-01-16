@@ -1,5 +1,6 @@
 .editor {
   min-height: 100px;
+  padding: 4px;
   border: 1px solid #ccc;
   cursor: text;
   outline: none;
