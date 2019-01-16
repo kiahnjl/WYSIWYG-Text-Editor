@@ -1,0 +1,10 @@
+.editor {
+  min-height: 100px;
+  border: 1px solid #ccc;
+  cursor: text;
+  outline: none;
+}
+
+.editor--active {
+  border-color: blue;
+}
