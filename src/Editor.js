@@ -6,10 +6,12 @@ class Editor extends Component {
   constructor() {
     super();
     this.state = {
+      text: '',
       active: false
     };
     this.focusSelf = this.focus.bind(this);
     this.blurSelf = this.blur.bind(this);
+    this.keydownSelf = this.keydown.bind(this);
   }
 
   focus() {
@@ -23,13 +25,25 @@ class Editor extends Component {
       active: false
     });
   }
+
+  keydown(e) {
+    // check other special keys
+    if(e.key !== 'Tab') {
+      e.persist();
+      this.setState((state) => ({
+        text: state.text + e.key
+      }));
+    }
+  }
   
   render() {
     let classes = 'editor';
     classes += this.state.active ? ' editor--active' : '';
     
     return (
-      <div class={classes} tabindex="0" onFocus={this.focusSelf} onBlur={this.blurSelf}>
+      <div class={classes} tabIndex="0"
+           onFocus={this.focusSelf} onBlur={this.blurSelf} onKeyDown={this.keydownSelf}>
+        {this.state.text}
         <Caret active={this.state.active}/>
       </div>
     );
