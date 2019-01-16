@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Caret from './Caret';
+import Renderer from './Renderer';
 import './Editor.css';
 
 class Editor extends Component {
@@ -32,12 +33,11 @@ class Editor extends Component {
   render() {
     let classes = 'editor';
     classes += this.state.active ? ' editor--active' : '';
-    
+    //<Caret active={this.state.active}/>
     return (
       <div class={classes} tabIndex="0"
            onFocus={this.focusSelf} onBlur={this.blurSelf} onKeyDown={this.keydownSelf}>
-        {this.props.text}
-        <Caret active={this.state.active}/>
+        <Renderer data={this.props.data}/>
       </div>
     );
   }
