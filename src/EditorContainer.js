@@ -12,8 +12,6 @@ class EditorContainer extends Component {
   }
 
   onType(key) {
-    console.log(key);
-
     this.setState((state) => ({
       data: getNextData(state.data, key),
       text: state.text + key
@@ -39,8 +37,6 @@ function getNextData(data, key) {
 
   data[index] = data[index] || '';
   data[index] += key;
-  
-  console.log(data);
   
   return data;
 }
