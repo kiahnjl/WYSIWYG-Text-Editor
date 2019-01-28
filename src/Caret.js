@@ -5,9 +5,7 @@ function Caret({ active }) {
   let classes = 'caret';
   classes += active ? ' caret--active' : ' caret--inactive';
 
-  return (
-    <div class={classes}></div>
-  );
+  return (<span className={classes}/>);
 }
 
 export default Caret;

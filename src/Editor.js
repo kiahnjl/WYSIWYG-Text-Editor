@@ -40,8 +40,9 @@ class Editor extends Component {
   }
   
   render() {
+    const { active } = this.state;
     let classes = 'editor';
-    classes += this.state.active ? ' editor--active' : '';
+    classes += active ? ' editor--active' : '';
 
     return (
       <div class={classes} tabIndex="0"
@@ -53,7 +54,7 @@ class Editor extends Component {
               return (
                 <p>
                   <span>{line}</span>
-                  <Caret active={true}/>
+                  <Caret active={active}/>
                 </p>
               );
             } else {
