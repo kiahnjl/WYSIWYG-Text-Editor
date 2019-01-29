@@ -1,6 +1,7 @@
 .caret {
   height: 16px;
   width: 1px;
+  margin-right: -1px; /* only if inline. Might need to position it */
   background-color: #000;
   animation: blink 1s infinite;
 }
