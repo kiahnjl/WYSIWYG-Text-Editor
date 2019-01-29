@@ -1,3 +1,10 @@
+## Status
+The code of this project is very messy at the moment.
+
+The goal is to get an idea of what it takes to build a text editor.
+
+Very much WIP. I will tidy up the code and report back here when it's better.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
