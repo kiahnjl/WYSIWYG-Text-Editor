@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Caret from './Caret';
+import Caret from './edit/Caret';
+import Line, { findContainingLine, getLineIndex } from './render/Line/index';
 import './Editor.css';
-import './Renderer.css';
 
 class Editor extends Component {
   constructor() {
@@ -77,29 +77,14 @@ function renderLineWithCursor(cursor, active) {
     if(index === cursor.row) {
       let start = line.substring(0, cursor.col);
       let end = line.substring(cursor.col);
-      return (<p class="line" data-index={index}>
+      return (<Line index={index}>
         <span>{start}</span>
         <Caret visible={active}/>
         <span>{end}</span>
-      </p>);
+      </Line>);
     }
-    return (<p class="line" data-index={index}>{line}</p>);
+    return (<Line index={index}>{line}</Line>);
   };
-}
-
-function getLineIndex(node) {
-  let index = node.dataset.index;
-  return index ? parseInt(index) : undefined;
-}
-
-function findContainingLine(node) {
-  if(node === document.body) {
-    return undefined;
-  } else if(node.classList && node.classList.contains('line')) {
-    return node;
-  } else {
-    return findContainingLine(node.parentNode);
-  }
 }
 
 export default Editor;
