@@ -33,6 +33,8 @@ class Editor extends Component {
 
   keydown(e) {
     this.props.onType(e.key);
+    // todo only prevent certain keys eg space and arrow or allow certain keys eg cmd + R
+    e.preventDefault();
   }
 
   click(e) {
@@ -77,7 +79,7 @@ function renderLineWithCursor(cursor, active) {
       let end = line.substring(cursor.col);
       return (<p class="line" data-index={index}>
         <span>{start}</span>
-        <Caret active={active}/>
+        <Caret visible={active}/>
         <span>{end}</span>
       </p>);
     }

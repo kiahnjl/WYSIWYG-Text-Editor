@@ -1,10 +1,9 @@
 import React from 'react';
 import './Caret.css';
 
-function Caret({ active }) {
+function Caret({ visible }) {
   let classes = 'caret';
-  classes += active ? ' caret--active' : ' caret--inactive';
-
+  classes += visible ? ' caret--show' : ' caret--hide';
   return (<span className={classes}/>);
 }
 

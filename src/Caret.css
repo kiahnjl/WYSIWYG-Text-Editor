@@ -1,9 +1,13 @@
 .caret {
+  position: absolute;
   height: 16px;
   width: 1px;
-  margin-right: -1px; /* only if inline. Might need to position it */
   background-color: #000;
   animation: blink 1s infinite;
+}
+
+.caret--hide {
+  display: none;
 }
 
 @keyframes blink {
@@ -22,13 +26,4 @@
   100% {
     opacity: 0;
   }
-}
-
-.caret--inactive {
-  display: none;
-}
-
-.caret--active {
-  display: inline-block;
-  vertical-align: bottom;
 }
