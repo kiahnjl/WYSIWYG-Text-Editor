@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>WYSIWYG Text Editor</title>
+    <link rel="stylesheet" href="src/styles/index.css">
+    <link rel="stylesheet" href="src/styles/editor.css">
+    <script src="src/scripts/editor.js"></script>
 </head>
 <body>
-    <h1>Todo</h1>
+    <div id="editor"></div>
+    <script>
+        var editor = document.getElementById("editor");
+        Editor.init(editor);
+    </script>
 </body>
 </html>
