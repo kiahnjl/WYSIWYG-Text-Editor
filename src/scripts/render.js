@@ -3,8 +3,8 @@
 // output: html
 
 (function() {
-  function render(rootElement, structure) {
-    rootElement.innerHTML = structure;
+  function render(rootElement, data) {
+    rootElement.innerHTML = data.getHtml();
   }
   
   window.render = render;

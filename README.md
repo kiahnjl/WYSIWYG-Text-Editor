@@ -6,7 +6,7 @@ From scratch.
 I'm building it up from vanilla JavaScript to get practice at:
 - choosing the right framework(s)
 - creating a minimal solution
-- not overcomplicating things
+- not over complicating things
 - adding in build automation
 
 There will be global variables until a proper module system has been
