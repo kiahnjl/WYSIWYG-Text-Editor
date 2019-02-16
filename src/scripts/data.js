@@ -24,15 +24,16 @@
       return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   };
   
-  var buildNode = function(type, text) {
-    return '<' + Tag[type] + '>' + text + '</' + Tag[type] + '>';
+  var buildNode = function(type, text, id) {
+    var dataId = (id !== undefined) ? ' data-id="' + id + '" ' : '';
+    return '<' + Tag[type] + dataId + '>' + text + '</' + Tag[type] + '>';
   };
 
   var builder = function(content, id) {
     var curr = content[id];
     
     if(!curr.children) {
-      return buildNode(curr.type, safeText(curr.text));
+      return buildNode(curr.type, safeText(curr.text), id);
     }
 
     var html = '';
@@ -41,7 +42,7 @@
       var children = curr.children.reduce(function(res, childId) {
         return res + builder(content, childId);
       }, '');
-      html = buildNode(curr.type, safeText(curr.text) + children);
+      html = buildNode(curr.type, safeText(curr.text) + children, id);
     }
 
     if(curr.next) {
