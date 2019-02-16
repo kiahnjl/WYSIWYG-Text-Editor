@@ -9,7 +9,7 @@
     BOLD: 1,
     ITALIC: 2,
     TEXT: 3,
-    NEWLINE: 4
+    LINE: 4
   };
   
   var Tag = {
@@ -17,7 +17,7 @@
     1: 'strong',
     2: 'i',
     3: 'span',
-    4: 'p'
+    4: 'div'
   };
 
   var safeText = function(text) {
@@ -33,25 +33,44 @@
     
     if(!curr.children) {
       return buildNode(curr.type, safeText(curr.text));
-    } else if(curr.children) {
-      return curr.children.map(function(childId) {
-        return buildNode(curr.type, safeText(curr.text) + builder(content, childId));
-      });
-    } else if(curr.next) {
-      return buildNode(curr.type, safeText(curr.text) + builder(content, curr.next));
     }
+
+    var html = '';
+
+    if(curr.children) {
+      var children = curr.children.reduce(function(res, childId) {
+        return res + builder(content, childId);
+      }, '');
+      html = buildNode(curr.type, safeText(curr.text) + children);
+    }
+
+    if(curr.next) {
+      html += builder(content, curr.next);
+    }
+
+    return html;
   };
   
   var create = function() {
     var Content = {
       0: {
-        type: Type.TITLE,
-        text: 'My ',
-        children: [1]
+        type: Type.LINE,
+        text: '',
+        children: [1],
+        next: 3
       },
       1: {
+        type: Type.TITLE,
+        text: 'My ',
+        children: [2]
+      },
+      2: {
         type: Type.BOLD,
         text: 'Header'
+      },
+      3: {
+        type: Type.LINE,
+        text: 'Hello world'
       }
     };
     
